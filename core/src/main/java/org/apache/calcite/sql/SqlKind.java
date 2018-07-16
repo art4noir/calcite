@@ -553,6 +553,16 @@ public enum SqlKind {
   NULLS_LAST,
 
   /**
+   * IGNORE NULLS clause.
+   */
+  IGNORE_NULLS,
+
+  /**
+   * RESPECT NULLS clause.
+   */
+  RESPECT_NULLS,
+
+  /**
    * The "IS TRUE" operator.
    */
   IS_TRUE,
@@ -846,8 +856,14 @@ public enum SqlKind {
   /** The {@code FIRST_VALUE} aggregate function. */
   FIRST_VALUE,
 
+  /** The {@code FIRST_VALUE_IGNORE_NULLS} aggregate function. */
+  FIRST_VALUE_IGNORE_NULLS,
+
   /** The {@code LAST_VALUE} aggregate function. */
   LAST_VALUE,
+
+  /** The {@code _IGNORE_NULLS} aggregate function. */
+  LAST_VALUE_IGNORE_NULLS,
 
   /** The {@code ANY_VALUE} aggregate function. */
   ANY_VALUE,
@@ -1063,8 +1079,8 @@ public enum SqlKind {
    * Category consisting of all built-in aggregate functions.
    */
   public static final EnumSet<SqlKind> AGGREGATE =
-      EnumSet.of(COUNT, SUM, SUM0, MIN, MAX, LEAD, LAG, FIRST_VALUE,
-          LAST_VALUE, COVAR_POP, COVAR_SAMP, REGR_SXX, REGR_SYY,
+      EnumSet.of(COUNT, SUM, SUM0, MIN, MAX, LEAD, LAG, FIRST_VALUE, FIRST_VALUE_IGNORE_NULLS,
+          LAST_VALUE, LAST_VALUE_IGNORE_NULLS, COVAR_POP, COVAR_SAMP, REGR_SXX, REGR_SYY,
           AVG, STDDEV_POP, STDDEV_SAMP, VAR_POP, VAR_SAMP, NTILE, COLLECT,
           FUSION, SINGLE_VALUE, ROW_NUMBER, RANK, PERCENT_RANK, DENSE_RANK,
           CUME_DIST);
@@ -1151,7 +1167,8 @@ public enum SqlKind {
                   TIMESTAMP_ADD, TIMESTAMP_DIFF, EXTRACT,
                   LITERAL_CHAIN, JDBC_FN, PRECEDING, FOLLOWING, ORDER_BY,
                   NULLS_FIRST, NULLS_LAST, COLLECTION_TABLE, TABLESAMPLE,
-                  VALUES, WITH, WITH_ITEM, SKIP_TO_FIRST, SKIP_TO_LAST),
+                  VALUES, WITH, WITH_ITEM, SKIP_TO_FIRST, SKIP_TO_LAST,
+                  IGNORE_NULLS, RESPECT_NULLS),
               AGGREGATE, DML, DDL));
 
   /**
